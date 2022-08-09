@@ -1,0 +1,20 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Download</title>
+</head>
+<body>
+    <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+        <input type="file" name="upload" id="upload">
+        <input type="submit" value="Submit" id="submit">
+    </form>
+    <button><a href="{{ url_for('reset') }}">Reset</a></button>
+    <br>
+    <br>
+    {% for file in files %}
+    <li><a href="{{ url_for('download') }}?file={{ file }}">{{ file }}</a></li>
+    {% endfor %}
+</body>
+</html>
