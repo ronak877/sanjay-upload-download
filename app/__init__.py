@@ -24,7 +24,7 @@ def upload():
 @app.route('/download', methods=['GET'])
 def download():
     video = request.args.get('file')
-    video_path = fr"static\videos\{video}"
+    video_path = "static/videos" + "/" + video
     return send_file(video_path, as_attachment=True)
 
 @app.route('/reset', methods=['GET'])
