@@ -31,5 +31,6 @@ def download():
 def reset():
     dir = app.config['UPLOAD_FOLDER']
     for f in os.listdir(dir):
-        os.remove(os.path.join(dir, f))
+        if not f == 'readme.txt':
+            os.remove(os.path.join(dir, f))
     return redirect(url_for('index'))
