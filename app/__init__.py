@@ -14,10 +14,7 @@ def index():
 def upload():
     if request.method == 'POST':
         video = request.files['upload']
-        print(video)
-        file_name, file_extention = os.path.splitext(video.filename)
-        final_file_name = f"video_{datetime.now().strftime('%Y_%m_%d_%H_%M_%S')}{file_extention}"
-        video_path = os.path.join(app.config['UPLOAD_FOLDER'], final_file_name)
+        video_path = os.path.join(app.config['UPLOAD_FOLDER'], video.filename)
         video.save(video_path)
     return redirect(url_for('index'))
 
